@@ -2,8 +2,6 @@
 
 name=system-call
 
-gcc -o $name-64 $name.c
-objdump -d -Mintel $name-64 > $name-64.dis
-gcc -m32 -o $name-32 $name.c
-objdump -d -Mintel $name-32 > $name-32.dis
-
+nasm -f elf32 $name-32.asm
+ld -m elf_i386 -s -o $name-32 $name-32.o
+#nasm -f elf64 $name-64.asm
