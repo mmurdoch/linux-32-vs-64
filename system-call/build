@@ -4,4 +4,7 @@ name=system-call
 
 nasm -f elf32 $name-32.asm
 ld -m elf_i386 -s -o $name-32 $name-32.o
-#nasm -f elf64 $name-64.asm
+objdump -d -Mintel $name-32 > $name-32.dis
+nasm -f elf64 $name-64.asm
+ld -m elf_x86_64 -s -o $name-64 $name-64.o
+objdump -d -Mintel $name-64 > $name-64.dis
