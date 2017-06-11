@@ -1,0 +1,9 @@
+#!/bin/bash
+
+name=${PWD##*/}
+
+gcc -o $name-64 $name.c
+objdump -d -Mintel $name-64 > $name-64.dis
+gcc -m32 -o $name-32 $name.c
+objdump -d -Mintel $name-32 > $name-32.dis
+
